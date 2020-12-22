@@ -1,0 +1,18 @@
+<div class="container row user">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Quiz Name</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let user of usersoftheDay ">
+        <td>{{user.usersc.username}}</td>
+        <td>{{user.quizes.quizname}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

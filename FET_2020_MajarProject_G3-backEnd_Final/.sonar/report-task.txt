@@ -1,0 +1,5 @@
+projectKey=G3_Final_Major_Project_BackEnd
+serverUrl=http://172.27.12.78
+dashboardUrl=http://172.27.12.78/dashboard/index/G3_Final_Major_Project_BackEnd
+ceTaskId=AXaJIP6QirXW5IlAPW7O
+ceTaskUrl=http://172.27.12.78/api/ce/task?id=AXaJIP6QirXW5IlAPW7O

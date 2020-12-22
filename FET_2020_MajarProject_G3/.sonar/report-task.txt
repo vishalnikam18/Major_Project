@@ -1,0 +1,5 @@
+projectKey=G3_Final_Major_Project_Angular
+serverUrl=http://172.27.12.78
+dashboardUrl=http://172.27.12.78/dashboard/index/G3_Final_Major_Project_Angular
+ceTaskId=AXaJHw70irXW5IlAPW7M
+ceTaskUrl=http://172.27.12.78/api/ce/task?id=AXaJHw70irXW5IlAPW7M

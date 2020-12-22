@@ -1,0 +1,135 @@
+<button class="btn btn-primary" (click)="quizlist()">Start Quiz </button>
+
+<div class="maxScore" *ngIf="maxScorer" [hidden]='!enable'>
+  <h2>MaxScorer For this Quiz is 
+    <label><strong> {{ userName }} </strong>
+      
+      scored:- {{ maxScorer }}
+  </label>
+  </h2>
+</div>
+<br><br>
+<div class="maxScore" *ngIf="!maxScorer" class="edit-form" [hidden]='!enable'>
+ 
+   
+    <h2>You are the first one to attempt this quize</h2>
+   
+    
+  </div> 
+<div class="container">
+
+ <h2 *ngIf="enable"> {{ counter | formatTime }}  </h2>
+  <div>
+    <h2  *ngIf="enable" class="fav1">Questions</h2>
+    <button *ngIf="enable" class="fav2" mat-icon-button (click)="toggleFavButton()">
+      <mat-icon *ngIf="selected" aria-label="Example icon-button with a heart icon">
+        favorite
+      </mat-icon>
+      <mat-icon *ngIf="!selected" aria-label="Example icon-button with a heart icon">
+        favorite_border
+      </mat-icon>
+    </button>
+  </div>
+  <br /><br /><br />
+
+  <ul class="list-group" *ngFor="let question of ques; let i = index">
+    <li class="card p-5" *ngIf="question.status && question.typeId == 1">
+      <div class="card-body">
+        <div class="border p-3 m-3">
+        <label>
+          <p class="card-title h4 " type="text">{{ i + 1 }}. {{ question.questions }}</p>
+        </label>
+      </div>
+      
+      
+      <div class="radio border p-3 m-3"  [ngClass]="question.option1==question.answer? 'correct':(question.userAns == question.option1? 'incorrect':'default')">
+        <label  ><input type="radio" [checked]="question.userAns == question.option1" value="1" name="optradio{{ i }}"
+            disabled />{{ question.option1 }}</label>
+      </div>
+      <div class="radio border p-3 m-3" [ngClass]="question.option2==question.answer? 'correct':(question.userAns == question.option2? 'incorrect':'default')">
+        <label  ><input type="radio" [checked]="question.userAns == question.option2" value="2" name="optradio{{ i }}"
+            disabled />{{ question.option2 }}</label>
+      </div>
+      <div class="radio border p-3 m-3" [ngClass]="question.option3==question.answer? 'correct':(question.userAns == question.option3? 'incorrect':'default')">
+        <label><input type="radio" [checked]="question.userAns == question.option3" value="3" name="optradio{{ i }}"
+            disabled />{{ question.option3 }}</label>
+      </div>
+      <div class="radio border p-3 m-3" [ngClass]="question.option4==question.answer? 'correct':(question.userAns == question.option4? 'incorrect':'default')">
+        <label><input type="radio" [checked]="question.userAns == question.option4" value="4" name="optradio{{ i }}"
+            disabled />{{ question.option4 }}</label>
+      </div>
+    </div>
+  
+    </li>
+     <!-- list-group-item -->
+     <li class="card p-5" *ngIf="!question.status && question.typeId == 1" > 
+     
+        <div class="card-body">
+        <div class="border p-3 m-3">
+          <label ><p class="card-title h4 " type="text">{{i+1}}. {{question.questions}}</p></label>
+        </div>
+        <!--   (wrong? 'incorrect':'default') -->
+        <div class="border p-3 m-3" >
+        <div   class="radio card-text border p-3 m-3" [ngClass]="question.userSelected? (question.option1==question.answer? 'correct':(question.wrong1? 'incorrect':'default')):'default'" >
+         <label   for="{{question.id}}1" id="{{question.id}}11"  ><input type="radio" (click)="setAnswer(question.option1,question.id,question.answer,question,i)"  id="{{question.id}}1" [disabled]="question.disable? true:false" [checked]="question.option1==question.selectedOption" value="1" name="optradio{{i}}"  >{{question.option1}}</label>
+        </div>
+        <div  class="radio card-text border p-3 m-3" [ngClass]="question.userSelected? (question.option2==question.answer? 'correct':(question.wrong2? 'incorrect':'default')):'default'">
+          <label    for="{{question.id}}2" id="{{question.id}}22"  ><input type="radio" (click)="setAnswer(question.option2,question.id,question.answer,question,i)" id="{{question.id}}2"  [disabled]="question.disable? true:false" [checked]="question.option2==question.selectedOption" value="2" name="optradio{{i}}"  >{{question.option2}}</label>
+        </div>
+        <div class="radio card-text border p-3 m-3" [ngClass]="question.userSelected? (question.option3==question.answer? 'correct':(question.wrong3? 'incorrect':'default')):'default'">
+          <label    for="{{question.id}}3" id="{{question.id}}33" ><input  (click)="setAnswer(question.option3,question.id,question.answer,question,i)" type="radio" id="{{question.id}}3"  [disabled]="question.disable? true:false" [checked]="question.option3==question.selectedOption" value="3" name="optradio{{i}}" >{{question.option3}}</label>
+        </div>
+        <div  class="radio card-text border p-3 m-3" [ngClass]="question.userSelected? (question.option4==question.answer? 'correct':(question.wrong4? 'incorrect':'default')):'default'">
+          <label    for="{{question.id}}4" id="{{question.id}}44"  > <input (click)="setAnswer(question.option4,question.id,question.answer,question,i)" type="radio" id="{{question.id}}4" [disabled]="question.disable? true:false" [checked]="question.option4==question.selectedOption" value="3" name="optradio{{i}}" >{{question.option4}}</label>
+        </div>
+      </div>
+      </div>
+    </li>
+   
+    <li class="card p-5" *ngIf="question.status && question.typeId == 2">
+      <div class="card-body">
+        <div class="border p-3 m-3">
+        <label>
+          <p class="card-title h4 " type="text">{{ i + 1 }}. {{ question.questions }}</p>
+        </label>
+      
+    
+      <div>
+        <label ><input class="card-text border desc" type="text" disabled value="{{ question.userAns }}" /></label>
+      </div>
+      <div>
+        <label>Correct Answer:{{ question.answer }}</label>
+      </div>
+    </div>
+  </div>
+
+    </li>
+    <li class="card p-5" *ngIf="!question.status && question.typeId == 2" >
+      <div class="card-body">
+        <div class="border p-3 m-3">
+        <label>
+          <p class="card-title h4 " type="text">{{ i + 1 }}. {{ question.questions }}</p>
+        </label>
+      
+      
+      <div>
+      
+        <label ><input  class="card border desc" [disabled]="question.disable ? true : false" type="text"
+          (blur)="onblurdesc(question.id, question.answer, $event, i)" placeholder="{{question.answerByUser}}" /></label>
+        <div>
+          <span *ngIf="question.disable"> Correct Answer:{{ question.answer }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+    </li>
+  </ul>
+<br>
+<br>
+  <button type="button" *ngIf="enable" class="btn btn-success" (click)="submitQuiz()">
+    Submit
+  </button>
+
+
+</div>
+

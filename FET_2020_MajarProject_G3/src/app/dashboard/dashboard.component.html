@@ -1,0 +1,63 @@
+
+
+<div class="container-fluid {{theme}}" *ngIf="userRoleId==2">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <img src="../../assets/images/icon.jpg" class="rounded-circle" alt="Image" width="304" height="236"> 
+      <h2>{{name}}</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/search"><strong><em>Search Quiz</em></strong></a></li><br>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/categories"><strong> <em>Quizes</em></strong></a></li><br>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/games"><strong><em>Games</em></strong></a></li>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/favList"><strong><em>Favourite </em></strong></a></li>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/History"><strong><em>Quiz History </em></strong></a></li>
+        <li  class="text"><a class="text-uppercase" routerLink="/dashboard"><strong><em>Themes</em></strong></a><div class="theme-content">
+          <div class="theme-options">
+            <img id="theme-1" src="/assets/images/back.jpg" [ngClass]="(theme === 'theme-1')  ? 'active' : '' " (click)="setTheme('theme-1')">
+            <img id="theme-2" src="/assets/images/bg2.jpeg" [ngClass]="(theme === 'theme-2')  ? 'active' : '' " (click)="setTheme('theme-2')">
+            <img id="theme-3" src="/assets/images/bg3.jpg"[ngClass]="(theme === 'theme-3')  ? 'active' : '' " (click)="setTheme('theme-3')">
+            <img id="theme-4" src="/assets/images/bg4.jpg" [ngClass]="(theme === 'theme-4')  ? 'active' : '' " (click)="setTheme('theme-4')">
+        
+          </div>
+        </div></li>
+        
+      </ul>
+
+    </div>
+
+    <div class="col-sm-9">
+      <div class="sidesection">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+<div class="container-fluid" *ngIf="userRoleId==1">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <img src="../../assets/images/icon.jpg" class="rounded-circle" alt="Image" width="304" height="236"> 
+      <h2>{{name}}</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/categories"><h3><strong><em>Category</em></strong></h3> </a></li>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/add"><h3><strong><em>Create Quiz</em></strong></h3></a></li>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/users"><h3><strong><em>Show Visiters</em></strong></h3></a></li>
+        <li class="text"><a class="text-uppercase" routerLink="/dashboard/chart"><h3><strong><em>Charts</em></strong></h3></a></li>
+      
+      </ul>
+
+    </div>
+
+    <div class="col-sm-9">
+      <div class="sidesection">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+
+    
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.inputStyleSelect{
+    background-color: green;
+    color: white;
+}
+mat-icon{
+ color: #ff0000;
+ max-inline-size: 50px;
+}
+.correct {
+  
+    background-color: #00c853;
+  }
+  .incorrect {
+    background-color: #b43636;
+    
+  }
+  .default{
+   color: black;
+  }
+
+.fav1{
+  float: left;;
+}
+.fav2{
+  float:right;
+}
+.maxScore{
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 5px red;
+}
+
+@media (max-width  : 400px)
+{
+  .desc
+  {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+}

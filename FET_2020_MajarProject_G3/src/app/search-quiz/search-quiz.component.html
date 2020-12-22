@@ -1,0 +1,33 @@
+<div class="col-sm-4 row">
+ 
+
+  <div class="md-form">
+      <input type="search" [(ngModel)]="quizname" placeholder="Search text" (keyup)="showQuize()">
+  </div>
+
+
+</div>
+
+
+<br>
+<div class="col-sm-4 row" *ngIf="quizname!=''">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let quize of UpdatedQuiz | search:quizname ; let i = index ">
+
+      <a (click)="quizeRounting(quize.id)">{{ quize.quizname }}</a> <button mat-icon-button (click)="toggleSelected(quize.id,i,quize.status)">
+      
+        <mat-icon *ngIf="this.UpdatedQuiz[i].status" aria-label="Example icon-button with a heart icon">
+          favorite
+        </mat-icon>
+        <mat-icon *ngIf="!this.UpdatedQuiz[i].status" aria-label="Example icon-button with a heart icon">
+          favorite_border
+        </mat-icon>
+
+      </button>
+    </li>
+
+
+  </ul>
+</div>
+
+
